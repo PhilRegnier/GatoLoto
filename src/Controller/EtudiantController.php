@@ -35,10 +35,9 @@ class EtudiantController extends AbstractController
 
         $maxDate = new DateTime();
         if ($etudiants) {
-            $maxDate = $etudiants[0]
-                ->getDateDuGateau()
-                ->modify('next friday');
+            $maxDate = $etudiants[0]->getDateDuGateau();
         }
+        $maxDate->modify('next friday');
 
         // tirage du prochain si possible
 
