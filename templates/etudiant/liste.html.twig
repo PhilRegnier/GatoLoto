@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block body %}
+
+    <div class="liste-entete">
+        {% if prochain %}
+            Le prochain gâteau sera ramené le {{ prochain.dateDuGateau | format_datetime('full', 'none', locale='fr') }}
+            par <a href="{{ path('etudiant_detail',{'id': prochain.id}) }}">
+                {{ prochain.prenom | capitalize }}
+                {{ prochain.nom | capitalize }}
+                </a>.
+        {%  else %}
+            Pour savoir qui ramènera un gâteau {{ vendredi | format_datetime('full', 'none', locale='fr') }} prochain
+        {% endif %}
+    </div>
+
+    <div class="liste-tirage">
+        <a class="btn btn-primary" href="{{ path('etudiant_tirage') }}" role="button">Lancer le dé pour savoir qui ramènera le gâteau suivant</a>
+    </div>
+
+    <div class="liste-etudiants">
+        <h1>Liste des étudiants</h1>
+        <div class="list-group">
+            {% for etudiant in etudiants %}
+                <a
+                        href="{{ path('etudiant_detail',{'id': etudiant.id}) }}"
+                        class="list-group-item list-group-item-action"
+                >
+                    {{ etudiant.prenom | capitalize }}
+                    {{ etudiant.nom | capitalize }}
+                    {% if etudiant.tireAuSort %}
+                        {{ etudiant.dateDuGateau }}
+                    {% else %}
+                        <small><i>pas encore désigné</i></small>
+                    {% endif %}
+                </a>
+            {% else %}
+                <p>Aucun étudiant de référencé</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

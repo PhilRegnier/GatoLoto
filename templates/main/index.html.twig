@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GatoLoto !{% endblock %}
+
+{% block body %}
+    <div class="accueil">
+        <div class="accueil-titre">
+            Envie de gâteau ?
+        </div>
+        <div class="accueil-photo">
+            <a href="{{ path('etudiant_liste') }}">
+                <img src="{{ asset('resources/gateau.jpg') }}">
+            </a>
+        </div>
+    </div>
+{% endblock %}

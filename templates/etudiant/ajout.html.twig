@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(personneForm) }}
+    {{ form_widget(personneForm) }}
+    <button class="btn btn-primary">Ajouter</button>
+    {{ form_end(personneForm) }}
+{% endblock %}
+
+{% block title %}
+    Ajout d'un étudiant
+{% endblock %}
