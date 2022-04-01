@@ -32,7 +32,8 @@ class EtudiantController extends AbstractController
         // cherche le vendredi d'après la date la plus grande à laquelle un gateau est ramené
 
         $etudiants = $personneRepository->findTires();
-        $maxDate = null;
+
+        $maxDate = new DateTime();
         if ($etudiants) {
             $maxDate = $etudiants[0]
                 ->getDateDuGateau()
@@ -41,7 +42,7 @@ class EtudiantController extends AbstractController
 
         // tirage du prochain si possible
 
-        if ($maxDate && $maxDate < $dateFinFormation && !empty($prochains)) {
+        if ($maxDate < $dateFinFormation && !empty($prochains)) {
             $prochain = $prochains[rand(0, count($prochains))]
                 ->setTireAuSort(true)
                 ->setDateDuGateau($maxDate);

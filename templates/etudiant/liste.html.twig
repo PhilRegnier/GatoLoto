@@ -31,7 +31,7 @@
                     {{ etudiant.prenom | capitalize }}
                     {{ etudiant.nom | capitalize }}
                     {% if etudiant.tireAuSort %}
-                        {{ etudiant.dateDuGateau }}
+                        {{ etudiant.dateDuGateau  | date('d/m/y') }}
                     {% else %}
                         <small><i>pas encore désigné</i></small>
                     {% endif %}
