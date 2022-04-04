@@ -68,7 +68,7 @@ class EtudiantController extends AbstractController
         // récupère le prochain étudiant à ramener un gateau
 
         foreach ($etudiants as $etudiant) {
-            if ($etudiant->getTireAuSort() && $etudiant->getDateDuGateau() === $vendredi) {
+            if ($etudiant->getTireAuSort() && $etudiant->getDateDuGateau() == $vendredi) {
                 $prochain = $etudiant;
                 break;
             }

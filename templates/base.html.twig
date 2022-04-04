@@ -26,6 +26,7 @@
     <body>
         {% include('fragments/_header.html.twig') %}
         <div class="body">
+            {% include('fragments/_message.html.twig') %}
             {% block body %} {% endblock %}
         </div>
         {% include('fragments/_footer.html.twig') %}
